@@ -28,14 +28,9 @@ namespace GroupProject
         public MainWindow()
         {
             InitializeComponent();
-
-            _bll = new BLLClass();
-
-            roleComboBox.ItemsSource = _bll.GetAllRoles();
-            roleComboBox.DisplayMemberPath = nameof(RoleDTO.Name);
         }
 
-        private void SignIn(object sender, RoutedEventArgs e)
+        private void SingInButtonClick(object sender, RoutedEventArgs e)
         {
             if (!_bll.IsExistsUserByLogin(signInLogin.Text))
             {
@@ -48,22 +43,13 @@ namespace GroupProject
                 MessageBox.Show("Incorrect password");
                 return;
             }
-
-            
         }
 
-        private void SignUp(object sender, RoutedEventArgs e)
+        private void SingUpButtonClick(object sender, RoutedEventArgs e)
         {
-            if (_bll.IsExistsUserByLogin(signUpLogin.Text))
-            {
-                MessageBox.Show("This login is unavailable");
-            }
-
-            _bll.AddUser(new UserDTO()
-            {
-                Login = signUpLogin.Text,
-                Password = signUpPassword.Text
-            });
+            SignUpWindow signUpWindow = new SignUpWindow();
+            signUpWindow.Show();
+            this.Close();
         }
     }
 }

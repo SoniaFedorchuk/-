@@ -1,0 +1,30 @@
+﻿<Window x:Class="GroupProject.ShopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroupProject"
+        mc:Ignorable="d"
+        Title="ShopWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="#FF595959">
+            
+        </StackPanel>
+        <ListBox Grid.Column="2" Name="listBox" Grid.Row="1" Background="#FFBE8F7F" Margin="5,0,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Label Content="Name of author: " Foreground="White" FontFamily="Microsoft Himalaya" />
+                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="Shevcneko" VerticalAlignment="Center"/>
+                        <Label Content="Name of book: " Foreground="White" FontFamily="Microsoft Himalaya" />
+                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="Name of book" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
