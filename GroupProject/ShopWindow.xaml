@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GroupProject"
+        xmlns:local="clr-namespace:GroupProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ShopWindow" Height="450" Width="800">
+        Title="ShopWindow" Height="540" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="403*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="252*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="#FF595959">
-            
+        <StackPanel Background="#FF49484D">
+
         </StackPanel>
-        <ListBox Grid.Column="2" Name="listBox" Grid.Row="1" Background="#FFBE8F7F" Margin="5,0,0,0">
+
+
+        <ListBox Grid.Column="1" Name="listBox" BorderBrush="#FFBD8E7E" BorderThickness="3" Margin="10,60,1,10" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
@@ -26,5 +30,129 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <DockPanel Grid.Column="1" Margin="0,0,0,376" Grid.ColumnSpan="3">
+            <materialDesign:ColorZone 
+  Mode="PrimaryMid"
+  Padding="16" Height="45" Background="#FF3E3D42" Width="739">
+                <DockPanel>
+
+                    <StackPanel
+      Orientation="Horizontal"
+      materialDesign:RippleAssist.IsCentered="True" Margin="0,-15,0,-27">
+                        <materialDesign:ColorZone Height="30"
+        Mode="Standard"
+        Padding="8 4 8 4"
+        CornerRadius="2"
+        Panel.ZIndex="1"
+        Margin="16,7,0,0"
+        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+              Width="Auto" />
+                                    <ColumnDefinition
+              Width="*" />
+                                    <ColumnDefinition
+              Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+            Style="{DynamicResource MaterialDesignToolButton}" Margin="0,-3,0,-7">
+                                    <materialDesign:PackIcon
+              Kind="Magnify"
+              Opacity=".56" />
+                                </Button>
+                                <TextBox
+            Grid.Column="1"
+            Margin="8 0 0 0"
+            materialDesign:HintAssist.Hint="Build a search bar"
+            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+            BorderThickness="0"
+            MinWidth="200"
+            VerticalAlignment="Center" />
+                                <Button
+            Style="{DynamicResource MaterialDesignToolButton}"
+            Grid.Column="2"/>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                        <Button
+        Style="{DynamicResource MaterialDesignToolForegroundButton}"
+        Margin="8,0,0,11"
+        Panel.ZIndex="0" Height="Auto" Width="39">
+                            <materialDesign:PackIcon 
+          Kind="Send" />
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+        </DockPanel>
+
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15">
+
+                        <TextBlock Foreground="Gray" Width="200" Margin="15 5" TextWrapping="Wrap">
+                           Lorem Ipsum dolor sit amet
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center" Foreground="#FFBD8E7E">
+                            Ok
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid>
+                <StackPanel Width="150" HorizontalAlignment="Left" Background="#FF3E3D42">
+
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Foreground="#FFBD8E7E" Height="43">
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <materialDesign:PackIcon Kind="About" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="About us" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
+                        </StackPanel>
+                    </Button>
+                    <Separator  ></Separator>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Foreground="#FFBD8E7E" Height="48">
+                        <StackPanel Orientation="Horizontal" Height="30" Width="124">
+                            <materialDesign:PackIcon Kind="Chat" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Chat" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
+                        </StackPanel>
+                    </Button>
+                    <Separator></Separator>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost>
+        <StackPanel Grid.Column="3" Margin="20,60,20,26">
+            <Expander
+    HorizontalAlignment="Stretch"
+    Header="Date">
+                <StackPanel
+      Orientation="Vertical"
+      TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+      Margin="24,8,24,16">
+                    <TextBlock
+        Text="Your Content" />
+
+                </StackPanel>
+            </Expander>
+
+            <Expander
+    HorizontalAlignment="Stretch"
+    Header="Custom Header Padding"
+    materialDesign:ExpanderAssist.DownHeaderPadding="35,2,24,2">
+                <StackPanel
+      Orientation="Vertical"
+      TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+      Margin="24,8,24,16">
+                    <TextBlock
+        Text="Your Content" />
+                    <TextBlock
+        Opacity=".68"
+        Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        TextWrapping="Wrap" />
+                </StackPanel>
+            </Expander>
+        </StackPanel>
     </Grid>
 </Window>

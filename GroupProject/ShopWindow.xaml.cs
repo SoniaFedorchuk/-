@@ -22,7 +22,9 @@ namespace GroupProject
         public ShopWindow()
         {
             InitializeComponent();
-            listBox.Items.Add()
+            //listBox.Items.Add();
         }
+
+        
     }
 }
