@@ -123,36 +123,40 @@
                 </StackPanel>
             </Grid>
         </materialDesign:DialogHost>
-        <StackPanel Grid.Column="3" Margin="20,60,20,26">
+        <StackPanel Grid.Column="3" Margin="20,60,20,218">
             <Expander
     HorizontalAlignment="Stretch"
-    Header="Date">
+    Header="Choose what you need">
                 <StackPanel
       Orientation="Vertical"
       TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
       Margin="24,8,24,16">
-                    <TextBlock
-        Text="Your Content" />
-
-                </StackPanel>
-            </Expander>
-
-            <Expander
-    HorizontalAlignment="Stretch"
-    Header="Custom Header Padding"
-    materialDesign:ExpanderAssist.DownHeaderPadding="35,2,24,2">
-                <StackPanel
-      Orientation="Vertical"
-      TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
-      Margin="24,8,24,16">
-                    <TextBlock
-        Text="Your Content" />
-                    <TextBlock
-        Opacity=".68"
-        Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        TextWrapping="Wrap" />
+                    <Button Margin="10" Content="Buy" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E"></Button>
+                    <TextBlock Text="or" HorizontalAlignment="Center" FontSize="16"></TextBlock>
+                    <Button Margin="10" Content="Reserve"  Background="#FFBD8E7E" BorderBrush="#FFBD8E7E"/>
+                    <materialDesign:PackIcon Kind="Love" Width="20" Height="20" HorizontalAlignment="Center" Foreground="#FF3E3D42" />
                 </StackPanel>
             </Expander>
         </StackPanel>
+
+        <Grid Grid.Column="3" Margin="0,296,0,0">
+            <Popup x:Name="popup1" StaysOpen="False" Placement="Center" MaxWidth="180"
+         AllowsTransparency="True"  >
+                <TextBlock TextWrapping="Wrap" Width="170" FontWeight="Medium" Foreground="#FFBD8E7E"  Text="Click on te book,and then choose what you would like to do with the book in the list above" TextAlignment="Center" FontSize="14" />
+                
+            </Popup>
+           
+            <TextBlock Text="Use Hints" Margin="153,175,54,13" FontSize="16" FontWeight="Medium" Foreground="#FF3E3D42"></TextBlock>
+            <ToggleButton x:Name="btnHints" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+  Style="{StaticResource MaterialDesignFlatToggleButton}"
+  ToolTip="MaterialDesignFlatToggleButton" Width="47" Height="42" Margin="0,0,4,4" Checked="btnHints_Checked">
+                <materialDesign:PackIcon 
+    Kind="Paperclip"
+    Height="36"
+    Width="30" Foreground="#FF3E3D42" />
+            </ToggleButton>
+            
+        </Grid>
+
     </Grid>
 </Window>

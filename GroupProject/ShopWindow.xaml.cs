@@ -25,6 +25,9 @@ namespace GroupProject
             //listBox.Items.Add();
         }
 
-        
+        private void btnHints_Checked(object sender, RoutedEventArgs e)
+        {
+            popup1.IsOpen = true;
+        }
     }
 }
