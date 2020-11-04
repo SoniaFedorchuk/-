@@ -113,7 +113,7 @@
                         </StackPanel>
                     </Button>
                     <Separator  ></Separator>
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Foreground="#FFBD8E7E" Height="48">
+                    <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="48">
                         <StackPanel Orientation="Horizontal" Height="30" Width="124">
                             <materialDesign:PackIcon Kind="Chat" Width="20" Height="20" VerticalAlignment="Center"/>
                             <TextBlock Text="Chat" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>

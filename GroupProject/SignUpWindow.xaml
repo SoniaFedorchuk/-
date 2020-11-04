@@ -6,32 +6,32 @@
         xmlns:local="clr-namespace:GroupProject"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="350">
+        Title="MainWindow" Height="340" Width="350">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="94*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1" Text="Enter login: " Foreground="#FF8D8D8D" Margin="90,0,0,0" />
-        <TextBlock Grid.Row="3" Text="Enter password: " Foreground="#FF8D8D8D" Margin="90,0,0,0" />
-        <TextBlock FontFamily="Microsoft Himalaya" Text="Registration" FontSize="85" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0"/>
+        <TextBlock Grid.Row="1" Text="Enter login: " Foreground="#FF8D8D8D" Margin="50,0,40,0" />
+        <TextBlock Grid.Row="3" Text="Enter password: " Foreground="#FF8D8D8D" Margin="50,0,40,0" />
+        <TextBlock FontFamily="Microsoft Himalaya" Text="Sign up" FontSize="85" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="83,14,83,19" Height="86" Grid.RowSpan="2" Width="176"/>
         <Border  Grid.Row="2" Margin="50,0,50,5" BorderThickness="0,0,0,1" BorderBrush="Black">
             <TextBox x:Name="signUpLogin" FontSize="20" FontFamily="Microsoft Himalaya" CaretBrush="{x:Null}" SelectionBrush="{x:Null}"/>
         </Border>
         <Border  Grid.Row="4" Margin="50,0,50,5" BorderThickness="0,0,0,1" BorderBrush="Black">
             <TextBox x:Name="signUpPassword" FontSize="20" FontFamily="Microsoft Himalaya" CaretBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="Black"/>
         </Border>
-        <ComboBox  x:Name="roleComboBox" Grid.Row="5" Margin="100,0" />
+        <ComboBox  x:Name="roleComboBox" Grid.Row="5" Margin="242,9,10,10" Height="28" />
         <Border Grid.Row="6" Margin="100,0" >
-            <Button Click="SingUpButtonClick" Background="#FFBE8F7F" BorderBrush="{x:Null}" Foreground="White" FontSize="30" Content="sing up" FontFamily="Microsoft Himalaya" FontWeight="Normal"/>
+            <Button Click="SingUpButtonClick" Background="#FFBE8F7F" BorderBrush="{x:Null}" Foreground="White" FontSize="30" Content="Sing up" FontFamily="Microsoft Himalaya" FontWeight="Normal"/>
         </Border>
-       
+
 
         <!--<TextBox x:Name="signInLogin" HorizontalAlignment="Left" Height="23" Margin="65,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="signInPassword" HorizontalAlignment="Left" Height="23" Margin="65,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

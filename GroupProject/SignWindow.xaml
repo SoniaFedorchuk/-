@@ -20,7 +20,7 @@
         <TextBlock Text="Enter login: " Foreground="#FF8D8D8D" Margin="50,5,40,3" Grid.Row="1" />
         <TextBlock Grid.Row="3" Text="Enter password: " Foreground="#FF8D8D8D" Margin="49,11,41,28" Grid.RowSpan="2" />
 
-        <TextBlock FontFamily="Microsoft Himalaya" Text="Login" FontSize="90" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="99,16,99,4" Height="90" Grid.RowSpan="2" Width="144"/>
+        <TextBlock FontFamily="Microsoft Himalaya" Text="Sign in" FontSize="90" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="81,16,68,4" Height="90" Grid.RowSpan="2" Width="193"/>
         <Border  Grid.Row="2" Margin="50,0,50,5" BorderThickness="0,0,0,1" BorderBrush="Black">
             <TextBox x:Name="signInLogin" FontSize="20" FontFamily="Microsoft Himalaya" CaretBrush="{x:Null}" SelectionBrush="{x:Null}"/>
         </Border>
@@ -28,7 +28,7 @@
             <TextBox x:Name="signInPassword" FontSize="20" FontFamily="Microsoft Himalaya" CaretBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="Black"/>
         </Border>
         <Border Grid.Row="5" Margin="100,0" >
-            <Button Click="SingInButtonClick" Background="#FFBD8E7E" BorderBrush="{x:Null}" Foreground="White" FontSize="30" Content="login" FontFamily="Microsoft Himalaya" FontWeight="Normal"/>
+            <Button Click="SingInButtonClick" Background="#FFBD8E7E" BorderBrush="{x:Null}" Foreground="White" FontSize="30" Content="Sign in" FontFamily="Microsoft Himalaya" FontWeight="Normal"/>
         </Border>
         <StackPanel Grid.Row="6">
             <TextBlock Text="Not have account?" Foreground="#FF8D8D8D" HorizontalAlignment="Center"/>

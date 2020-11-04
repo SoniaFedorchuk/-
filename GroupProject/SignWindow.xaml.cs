@@ -24,10 +24,11 @@ namespace GroupProject
     {
         private IBLLClass _bll = null;
 
-
         public MainWindow()
         {
             InitializeComponent();
+
+            _bll = new BLLClass();
         }
 
         private void SingInButtonClick(object sender, RoutedEventArgs e)
