@@ -22,9 +22,15 @@ namespace DAL
                 },
                 new Roles()
                 {
+                    Name = "Librarian"
+                },
+                new Roles()
+                {
                     Name = "User"
                 }
             };
+            context.Roles.AddRange(role);
+            context.SaveChanges();
         }
     }
 }

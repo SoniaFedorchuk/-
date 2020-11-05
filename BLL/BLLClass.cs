@@ -13,16 +13,22 @@ namespace BLL
 {
     public interface IBLLClass
     {
-        void AddUser(UserDTO userDTO);
         IEnumerable<RoleDTO> GetAllRoles();
+        IEnumerable<BookDTO> GetAllBooks();
+        IEnumerable<UserDTO> GetAllUsers();
+
+        void AddUser(UserDTO userDTO);
+        void DeleteBook(int index);
+        void DeleteUser(int index);
+        void AddBooks(BookDTO bookDTO);
+        void UpdateBook(BookDTO booksDTO);
+        void ChangeUserRole(int user_id, int new_user_role_id);
+
         UserDTO GetUserByLoginAndPassword(string login, string password);
+
         bool SellBooks(int index, int amount);
         bool IsExistsUserByLogin(string login);
         bool IsExistsUserByLoginAndPassword(string login, string passHash);
-        void AddBooks(BookDTO bookDTO);
-        IEnumerable <BookDTO> GetAllBooks();
-        void DeleteBook(int index);
-        void UpdateBook(BookDTO booksDTO);
     }
 
     public class BLLClass : IBLLClass
@@ -39,7 +45,8 @@ namespace BLL
             dal.AddUser(new Users()
             {
                 Login = userDTO.Login,
-                Password = Utils.ComputeSha256Hash(userDTO.Password)
+                Password = Utils.ComputeSha256Hash(userDTO.Password),
+                RoleId = userDTO.RoleId
             });
         }
         public bool SellBooks(int index, int amount)
@@ -86,17 +93,17 @@ namespace BLL
         }
         public IEnumerable<BookDTO> GetAllBooks()
         {
-            return dal.GetAllBooks().Select(books => new BookDTO()
+            return dal.GetAllBooks().Select(book => new BookDTO()
             {
-                Id = books.Id,
-                Name = books.Name,
-                Author = books.Author,
-                Amount = books.Amount,
-                Pages = books.Pages,
-                Price = books.Price,
-                Publisher = books.Publisher,
-                Year = books.Year,
-                Genre = books.Genre
+                Id = book.Id,
+                Name = book.Name,
+                Author = book.Author,
+                Amount = book.Amount,
+                Pages = book.Pages,
+                Price = book.Price,
+                Publisher = book.Publisher,
+                Year = book.Year,
+                Genre = book.Genre
             }).ToList();
         }
         public bool IsExistsUserByLogin(string login)
@@ -120,12 +127,35 @@ namespace BLL
             {
                 Id = user.Id,
                 Login = user.Login,
+                RoleId = user.RoleId,
+                Role = user.Role.Name,
                 Password = null
             };
         }
         public void DeleteBook(int index)
         {
             dal.DeleteBook(index);
+        }
+
+        public IEnumerable<UserDTO> GetAllUsers()
+        {
+            return dal.GetAllUsers().Select(user => new UserDTO()
+            {
+                Id = user.Id,
+                Login = user.Login,
+                Role = user.Role.Name,
+                RoleId = user.RoleId
+            }).ToList();
+        }
+
+        public void ChangeUserRole(int user_id, int new_user_role_id)
+        {
+            dal.ChangeUserRole(user_id, new_user_role_id);
+        }
+
+        public void DeleteUser(int index)
+        {
+            dal.DeleteUser(index);
         }
     }
 }

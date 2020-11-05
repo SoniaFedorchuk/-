@@ -10,17 +10,23 @@ namespace DAL
 
     public interface IDALClass
     {
-        void AddUser(Users newUser);
         IQueryable<Roles> GetAllRoles();
+        IQueryable<Books> GetAllBooks();
+        IQueryable<Users> GetAllUsers();
+
+        void AddUser(Users newUser);
         void AddBooks(Books newBook);
         void UpdateBook(Books book);
-        bool SellBook(int index, int amount);
+        void DeleteBook(int index);
+        void DeleteUser(int index);
+        void ChangeUserRole(int user_id, int new_user_role_id);
+
         Users GetUserByLoginAndPassword(string login, string passHash);
 
+        bool SellBook(int index, int amount);
         bool IsExistsUserByLoginAndPassword(string login, string passHash);
         bool IsExistsUserByLogin(string login);
-        IQueryable<Books> GetAllBooks();
-        void DeleteBook(int index);
+
     }
 
     public class DALClass : IDALClass
@@ -95,5 +101,21 @@ namespace DAL
             ctx.SaveChanges();
         }
 
+        public IQueryable<Users> GetAllUsers()
+        {
+            return ctx.Users;
+        }
+
+        public void ChangeUserRole(int user_id, int new_user_role_id)
+        {
+            ctx.Users.First(u => u.Id == user_id).RoleId = new_user_role_id;
+            ctx.SaveChanges();
+        }
+
+        public void DeleteUser(int index)
+        {
+            ctx.Users.Remove(ctx.Users.FirstOrDefault(u => u.Id == index));
+            ctx.SaveChanges();
+        }
     }
 }

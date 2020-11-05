@@ -12,7 +12,7 @@ namespace DAL.Configurations
         public UserConfigurate()
         {
             this.HasKey(u => u.Id);
-            this.HasKey(u => u.RoleId);
+            this.Property(u => u.RoleId);
             this.Property(u => u.Login).IsRequired().HasMaxLength(30);
             this.Property(u => u.Password).IsRequired().HasMaxLength(512);
         }

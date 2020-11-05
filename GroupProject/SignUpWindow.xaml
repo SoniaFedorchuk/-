@@ -27,10 +27,10 @@
         <Border  Grid.Row="4" Margin="50,0,50,5" BorderThickness="0,0,0,1" BorderBrush="Black">
             <TextBox x:Name="signUpPassword" FontSize="20" FontFamily="Microsoft Himalaya" CaretBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="Black"/>
         </Border>
-        <ComboBox  x:Name="roleComboBox" Grid.Row="5" Margin="242,9,10,10" Height="28" />
         <Border Grid.Row="6" Margin="100,0" >
             <Button Click="SingUpButtonClick" Background="#FFBE8F7F" BorderBrush="{x:Null}" Foreground="White" FontSize="30" Content="Sing up" FontFamily="Microsoft Himalaya" FontWeight="Normal"/>
         </Border>
+        <Label x:Name="logLabel" HorizontalAlignment="Left" Margin="141,27,0,0" Grid.Row="5" VerticalAlignment="Top"/>
 
 
         <!--<TextBox x:Name="signInLogin" HorizontalAlignment="Left" Height="23" Margin="65,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

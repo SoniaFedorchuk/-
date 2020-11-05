@@ -24,6 +24,8 @@ namespace GroupProject
     {
         private IBLLClass _bll = null;
 
+        enum UserRole { Admin = 1, Librarian = 2, User = 3 }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,6 +46,27 @@ namespace GroupProject
                 MessageBox.Show("Incorrect password");
                 return;
             }
+
+            switch ((UserRole)_bll.GetUserByLoginAndPassword(signInLogin.Text, signInPassword.Text).RoleId)
+            {
+                case UserRole.Admin:
+                    new AdminWindow().Show();
+                    this.Close();
+                    break;
+                case UserRole.Librarian:
+                    LibrarianWindow librarian = new LibrarianWindow();
+                    librarian.Show();
+                    this.Close();
+                    break;
+                case UserRole.User:
+                    ShopWindow shop = new ShopWindow();
+                    shop.Show();
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void SingUpButtonClick(object sender, RoutedEventArgs e)

@@ -27,9 +27,6 @@ namespace GroupProject
         {
             InitializeComponent();
             _bll = new BLLClass();
-
-            roleComboBox.ItemsSource = _bll.GetAllRoles();
-            roleComboBox.DisplayMemberPath = nameof(RoleDTO.Name);
         }
 
         private void SingUpButtonClick(object sender, RoutedEventArgs e)
@@ -37,13 +34,19 @@ namespace GroupProject
             if (_bll.IsExistsUserByLogin(signUpLogin.Text))
             {
                 MessageBox.Show("This login is unavailable");
+                return;
             }
 
             _bll.AddUser(new UserDTO()
             {
                 Login = signUpLogin.Text,
-                Password = signUpPassword.Text
+                Password = signUpPassword.Text,
+                RoleId = 3
             });
+
+            MessageBox.Show("U succesfully registrated");
+            new SignUpWindow().Show();
+            this.Close();
         }
     }
 }

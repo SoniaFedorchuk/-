@@ -24,20 +24,19 @@ namespace GroupProject
         private IBLLClass _bll = null;
         private UserDTO user = null;
         
-        public enum View { Books };
-        public enum OrderBy { book_name, date, amount_sold };
 
-        private View view;
         public LibrarianWindow()
         {
             InitializeComponent();
             _bll = new BLLClass();
+            this.Update();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddBookWindow addBook = new AddBookWindow(_bll);
-            addBook.Show();
+            new AddBookWindow(_bll).Show();
+
+            this.Update();
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
@@ -50,20 +49,18 @@ namespace GroupProject
 
             _bll.DeleteBook((dataGrid.SelectedItem as BookDTO).Id);
 
-            dataGrid.ItemsSource = _bll.GetAllBooks();
-
+            this.Update();
         }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            this.dataGrid.ItemsSource = _bll.GetAllBooks();
-        }
-
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             EditBookWindow editBook = new EditBookWindow((dataGrid.SelectedItem as BookDTO), _bll);
             editBook.Show();
-            //this.Update(this, null);
+            this.Update();
+        }
+
+        private void Update()
+        {
+            this.dataGrid.ItemsSource = _bll.GetAllBooks();
         }
 
         private void btnSell_Click(object sender, RoutedEventArgs e)
@@ -73,7 +70,6 @@ namespace GroupProject
                 MessageBox.Show("Select book that you want to sell");
                 return;
             }
-            this.IsEnabled = false;
 
             SellWindow sell_book = new SellWindow((dataGrid.SelectedItem as BookDTO).Id, (dataGrid.SelectedItem as BookDTO).Amount, _bll);
             sell_book.Show();

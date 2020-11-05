@@ -74,13 +74,6 @@
                 </StackPanel>
             </Button>
             <Separator></Separator>
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" x:Name="btnUpdate" Click="btnUpdate_Click"  >
-                <StackPanel Orientation="Horizontal" Height="30" Width="153">
-                    <materialDesign:PackIcon Kind="Update" Width="20" Height="20" VerticalAlignment="Center"/>
-                    <TextBlock Text="Update" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
-                </StackPanel>
-            </Button>
-            <Separator  ></Separator>
             <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48">
                 <StackPanel Orientation="Horizontal" Height="30" Width="149">
                     <materialDesign:PackIcon Kind="Chat" Width="20" Height="20" VerticalAlignment="Center"/>

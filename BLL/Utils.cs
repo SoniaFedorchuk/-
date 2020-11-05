@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class Utils
+    static class Utils
     {
         public static string ComputeSha256Hash(string rawData)
         {
