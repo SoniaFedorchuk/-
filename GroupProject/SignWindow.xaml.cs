@@ -20,13 +20,13 @@ namespace GroupProject
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignWindow : Window
     {
         private IBLLClass _bll = null;
 
         enum UserRole { Admin = 1, Librarian = 2, User = 3 }
 
-        public MainWindow()
+        public SignWindow()
         {
             InitializeComponent();
 

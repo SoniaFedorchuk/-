@@ -32,6 +32,7 @@ namespace DAL
             context.Roles.AddRange(role);
             context.SaveChanges();
 
+
             var books = new List<Books>()
             {
                 new Books()
@@ -64,7 +65,7 @@ namespace DAL
                     Publisher = "nemem",
                     Pages = 170,
                     Price = 60,
-                    Year = DateTime.Parse("15/06/1855"),
+                    Year = DateTime.Parse("06/15/1855"),
                     Amount = 100,
                     Author = "Pushkin",
                     Genre = "Drama"
@@ -76,7 +77,7 @@ namespace DAL
                     Publisher = "nemem",
                     Pages = 100,
                     Price = 70,
-                    Year = DateTime.Parse("15/06/1855"),
+                    Year = DateTime.Parse("06/15/1855"),
                     Amount = 100,
                     Author = "Rokfeler",
                     Genre = "Sientific"
@@ -88,7 +89,7 @@ namespace DAL
                     Publisher = "nemem",
                     Pages = 230,
                     Price = 50,
-                    Year = DateTime.Parse("21/05/1999"),
+                    Year = DateTime.Parse("05/21/1999"),
                     Amount = 100,
                     Author = "Rowling",
                     Genre = "Fantasy"

@@ -12,10 +12,10 @@ namespace DAL.Configurations
         public BookConfigurate()
         {
             this.HasKey(b => b.Id);
-            this.Property(b => b.Name).IsRequired().HasMaxLength(30);
-            this.Property(b => b.Publisher).IsRequired().HasMaxLength(30);
-            this.Property(b => b.Author).IsRequired().HasMaxLength(30);
-            this.Property(b => b.Genre).IsRequired().HasMaxLength(30);
+            this.Property(b => b.Name).IsRequired().HasMaxLength(50);
+            this.Property(b => b.Publisher).IsRequired().HasMaxLength(50);
+            this.Property(b => b.Author).IsRequired().HasMaxLength(50);
+            this.Property(b => b.Genre).IsRequired().HasMaxLength(50);
             this.Property(b => b.Amount);
             this.Property(b => b.Price);
             this.Property(b => b.Year);

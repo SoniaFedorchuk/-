@@ -45,21 +45,21 @@
         </ListView>
         
         <StackPanel Width="182" HorizontalAlignment="Left" Background="#FF3E3D42">
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100"  x:Name="btnAdd" Click="btnAdd_Click">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" Click="Add">
                 <StackPanel Orientation="Horizontal" Height="30">
                     <materialDesign:PackIcon Kind="Add" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Add new book" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
                 </StackPanel>
             </Button>
             <Separator  ></Separator>
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" x:Name="btnDel" Click="btnDel_Click" >
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" Click="Delete" >
                 <StackPanel Orientation="Horizontal" Height="30" Width="153">
                     <materialDesign:PackIcon Kind="DeleteForever" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Delete book" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
                 </StackPanel>
             </Button>
             <Separator  ></Separator>
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100"  x:Name="btnEdit" Click="btnEdit_Click" >
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" Click="Edit" >
                 <StackPanel Orientation="Horizontal" Height="30" Width="150">
                     <materialDesign:PackIcon Kind="EditOutline" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Edit book" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
@@ -67,7 +67,7 @@
             </Button>
             
             <Separator  ></Separator>
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" x:Name="btnSell" Click="btnSell_Click">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Height="43"  Opacity="100" Click="Sell">
                 <StackPanel Orientation="Horizontal" Height="30" Width="150">
                     <materialDesign:PackIcon Kind="AttachMoney" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Sell book" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
@@ -78,6 +78,20 @@
                 <StackPanel Orientation="Horizontal" Height="30" Width="149">
                     <materialDesign:PackIcon Kind="Chat" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Chat" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
+                </StackPanel>
+            </Button>
+            <Separator></Separator>
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48" Click="UpdateEvent">
+                <StackPanel Orientation="Horizontal" Height="30" Width="149">
+                    <materialDesign:PackIcon Kind="Update" Width="20" Height="20" VerticalAlignment="Center"/>
+                    <TextBlock Text="Update" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
+                </StackPanel>
+            </Button>
+            <Separator></Separator>
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48" Click="Initialize">
+                <StackPanel Orientation="Horizontal" Height="30" Width="149">
+                    <materialDesign:PackIcon Kind="Upload" Width="20" Height="20" VerticalAlignment="Center"/>
+                    <TextBlock Text="Initialize" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>
                 </StackPanel>
             </Button>
             <Separator></Separator>
