@@ -45,7 +45,7 @@ namespace GroupProject
             });
 
             MessageBox.Show("U succesfully registrated");
-            new SignUpWindow().Show();
+            new SignWindow().Show();
             this.Close();
         }
     }
