@@ -23,9 +23,9 @@
                 <DataTemplate>
                     <DockPanel>
                         <Label Content="Name of author: " Foreground="White" FontFamily="Microsoft Himalaya" />
-                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="Shevcneko" VerticalAlignment="Center"/>
+                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="{Binding Author}" VerticalAlignment="Center"/>
                         <Label Content="Name of book: " Foreground="White" FontFamily="Microsoft Himalaya" />
-                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="Name of book" VerticalAlignment="Center"/>
+                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="{Binding Name}" VerticalAlignment="Center"/>
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
