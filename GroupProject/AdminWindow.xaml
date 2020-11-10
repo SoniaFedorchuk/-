@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="UsersData" HorizontalAlignment="Left" Height="419" Margin="227,0,0,0" VerticalAlignment="Top" Width="555"/>
-        <Button Content="Change role" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="137" Click="ChangeRole"/>
-        <Button Content="Delete User" HorizontalAlignment="Left" Margin="25,47,0,0" VerticalAlignment="Top" Width="137" Click="DeleteUser"/>
+    <Grid Background="#FF3E3D42">
+        <DataGrid x:Name="UsersData" HorizontalAlignment="Left" Height="419" Margin="184,0,0,0" VerticalAlignment="Top" Width="598"/>
+        <Button Content="Change role" HorizontalAlignment="Left" Margin="25,20,0,0" VerticalAlignment="Top" Width="137" Click="ChangeRole" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E"/>
+        <Button Content="Delete User" HorizontalAlignment="Left" Margin="25,72,0,0" VerticalAlignment="Top" Width="137" Click="DeleteUser" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E"/>
 
     </Grid>
 </Window>
