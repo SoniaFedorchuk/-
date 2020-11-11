@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LibrarianWindow" Height="540" Width="1000" Background="#FFFAFAFA">
+        Title="LibrarianWindow" Height="540" Width="1000" Background="#FFFAFAFA" ResizeMode="NoResize">
     <Grid>
         <ListView x:Name="dataGrid"
   ItemsSource="{Binding Items1}" Margin="198,10,21,10">

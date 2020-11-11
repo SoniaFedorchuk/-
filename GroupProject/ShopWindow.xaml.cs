@@ -31,11 +31,11 @@ namespace GroupProject
             InitializeComponent();
             _bll = new BLLClass();
 
-            for (int i = 0; i < (_bll.GetAllBooks()).ToList().Count; ++i)
-            {
-                books.Add(new Books() { Author = ((_bll.GetAllBooks()).ToList()[i].Author), Name = ((_bll.GetAllBooks()).ToList()[i].Name) });
-            }
-            listBox.ItemsSource = books;
+            //for (int i = 0; i < (_bll.GetAllBooks()).ToList().Count; ++i)
+            //{
+            //    books.Add(new Books() { Author = ((_bll.GetAllBooks()).ToList()[i].Author), Name = ((_bll.GetAllBooks()).ToList()[i].Name) });
+            //}
+            dataGrid.ItemsSource = _bll.GetAllBooks(); 
         }
 
         private void btnHints_Checked(object sender, RoutedEventArgs e)
@@ -80,16 +80,28 @@ namespace GroupProject
                 var bookByName = _bll.GetBookByName(txt_Search.Text);
                 ObservableCollection<Books> book = new ObservableCollection<Books>();
                 book.Add(new Books { Author = bookByName.Author, Name = bookByName.Name });
-                listBox.ItemsSource = book;
+                dataGrid.ItemsSource = book;
             }
             else if (txt_Search.Text == "")
-                listBox.ItemsSource = books;
+                dataGrid.ItemsSource = books;
         }
 
         private void btnTakeMotivation_Click(object sender, RoutedEventArgs e)
         {
             WindowForMotivation window = new WindowForMotivation();
             window.Show();
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BuyBookWindow buyBookWindow = new BuyBookWindow(dataGrid.SelectedItem as BookDTO,_bll);
+            buyBookWindow.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            BuyBookWindow buyBookWindow = new BuyBookWindow(dataGrid.SelectedItem as BookDTO,_bll);
+            buyBookWindow.Show();
         }
     }
 }

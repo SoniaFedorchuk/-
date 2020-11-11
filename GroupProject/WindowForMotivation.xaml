@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="WindowForMotivation" Height="250" Width="400">
+        Title="WindowForMotivation" Height="250" Width="300" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.ColumnSpan="2" Margin="20" TextWrapping="Wrap" Name="txt_qoute" Foreground="#FF403B3B" FontFamily="Bookman Old Style" FontSize="23"/>
 
-        <Border BorderBrush="#FFBD8E7E" Grid.Column="1" Grid.Row="1"  BorderThickness="0,0,0,2" Margin="10">
+        <Border BorderBrush="#FFBD8E7E" Grid.Row="1"  BorderThickness="0,0,0,2" Margin="133,10,10,10" Grid.ColumnSpan="2">
             <TextBlock  Name="txt_author" FontStyle="Italic"/>
         </Border>
 

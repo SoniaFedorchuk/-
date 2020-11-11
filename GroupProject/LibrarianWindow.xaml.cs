@@ -22,7 +22,6 @@ namespace GroupProject
     public partial class LibrarianWindow : Window
     {
         private IBLLClass _bll = null;
-        private UserDTO user = null;
         
 
         public LibrarianWindow()

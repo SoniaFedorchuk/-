@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="EditBookWindow" Height="400" Width="600">
+        Title="EditBookWindow" Height="400" Width="600" ResizeMode="NoResize">
     <Grid RenderTransformOrigin="0.495,0.495">
         <Grid.ColumnDefinitions >
             <ColumnDefinition Width="122" />
