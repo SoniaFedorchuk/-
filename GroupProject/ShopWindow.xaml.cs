@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +26,6 @@ namespace GroupProject
     {
         private IBLLClass _bll = null;
         ObservableCollection<Books> books = new ObservableCollection<Books>();
-
         public ShopWindow()
         {
             InitializeComponent();
@@ -36,7 +36,6 @@ namespace GroupProject
                 books.Add(new Books() { Author = ((_bll.GetAllBooks()).ToList()[i].Author), Name = ((_bll.GetAllBooks()).ToList()[i].Name) });
             }
             listBox.ItemsSource = books;
-
         }
 
         private void btnHints_Checked(object sender, RoutedEventArgs e)
@@ -94,3 +93,4 @@ namespace GroupProject
         }
     }
 }
+
