@@ -16,20 +16,44 @@
         <StackPanel Background="#FF49484D">
 
         </StackPanel>
+        <ListView x:Name="dataGrid" Grid.Column="1"
+  ItemsSource="{Binding Items1}" Margin="0,46,5,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Id}"
+        Header="Id" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Name}"
+        Header="Name" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Publisher}"
+        Header="Publisher" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Pages}"
+        Header="Pages" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Price}"
+        Header="Price" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Year}"
+        Header="Year" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Author}"
+        Header="Author" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Genre}"
+        Header="Genre" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Amount}"
+        Header="Amount" />
+
+                </GridView>
+
+            </ListView.View>
+        </ListView>
 
 
-        <ListBox Grid.Column="1" Name="listBox" BorderBrush="#FFBD8E7E" BorderThickness="3" Margin="10,60,1,10" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <Label Content="Name of author: " Foreground="White" FontFamily="Microsoft Himalaya" />
-                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="Shevcneko" VerticalAlignment="Center"/>
-                        <Label Content="Name of book: " Foreground="White" FontFamily="Microsoft Himalaya" />
-                        <TextBlock MaxWidth="100" FontWeight="Bold" Text="Name of book" VerticalAlignment="Center"/>
-                    </DockPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
         <DockPanel Grid.Column="1" Margin="0,0,0,376" Grid.ColumnSpan="3">
             <materialDesign:ColorZone 
   Mode="PrimaryMid"
@@ -61,7 +85,7 @@
               Kind="Magnify"
               Opacity=".56" />
                                 </Button>
-                                <TextBox
+                                <TextBox x:Name="txtFind"
             Grid.Column="1"
             Margin="8 0 0 0"
             materialDesign:HintAssist.Hint="Build a search bar"
@@ -77,7 +101,7 @@
                         <Button
         Style="{DynamicResource MaterialDesignToolForegroundButton}"
         Margin="8,0,0,11"
-        Panel.ZIndex="0" Height="Auto" Width="39">
+        Panel.ZIndex="0" Height="Auto" Width="39" Click="Finder">
                             <materialDesign:PackIcon 
           Kind="Send" />
                         </Button>

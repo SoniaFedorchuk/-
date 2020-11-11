@@ -26,7 +26,6 @@ namespace DAL
         bool SellBook(int index, int amount);
         bool IsExistsUserByLoginAndPassword(string login, string passHash);
         bool IsExistsUserByLogin(string login);
-
     }
 
     public class DALClass : IDALClass
@@ -37,6 +36,15 @@ namespace DAL
         {
             ctx.Users.Add(newUser);
             ctx.SaveChanges();
+        }
+
+        public IQueryable<Roles> GetAllRoles()
+        {
+            return ctx.Roles;
+        }
+        public IQueryable<Books> GetAllBooks()
+        {
+            return ctx.Books;
         }
         public void AddBooks(Books newBook)
         {
@@ -56,14 +64,6 @@ namespace DAL
             }
         }
 
-        public IQueryable<Roles> GetAllRoles()
-        {
-            return ctx.Roles;
-        }
-        public IQueryable<Books> GetAllBooks()
-        {
-            return ctx.Books;
-        }
         public Users GetUserByLoginAndPassword(string login, string passHash)
         {
             var user = ctx.Users.FirstOrDefault(u => u.Login == login && u.Password == passHash);

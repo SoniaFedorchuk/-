@@ -40,6 +40,21 @@ namespace BLL
             dal = new DALClass();
         }
 
+        public IEnumerable<BookDTO> GetAllBooks()
+        {
+            return dal.GetAllBooks().Select(book => new BookDTO()
+            {
+                Id = book.Id,
+                Name = book.Name,
+                Author = book.Author,
+                Amount = book.Amount,
+                Pages = book.Pages,
+                Price = book.Price,
+                Publisher = book.Publisher,
+                Year = book.Year,
+                Genre = book.Genre
+            }).ToList();
+        }
         public void AddUser(UserDTO userDTO)
         {
             dal.AddUser(new Users()
@@ -91,21 +106,7 @@ namespace BLL
                 Name = role.Name
             }).ToList();
         }
-        public IEnumerable<BookDTO> GetAllBooks()
-        {
-            return dal.GetAllBooks().Select(book => new BookDTO()
-            {
-                Id = book.Id,
-                Name = book.Name,
-                Author = book.Author,
-                Amount = book.Amount,
-                Pages = book.Pages,
-                Price = book.Price,
-                Publisher = book.Publisher,
-                Year = book.Year,
-                Genre = book.Genre
-            }).ToList();
-        }
+
         public bool IsExistsUserByLogin(string login)
         {
             return dal.IsExistsUserByLogin(login);
