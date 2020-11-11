@@ -14,12 +14,12 @@ namespace DAL
         {
             Database.SetInitializer(new Initializer());
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder model_builder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new BookConfigurate());
-            modelBuilder.Configurations.Add(new RoleConfigurate());
-            modelBuilder.Configurations.Add(new UserConfigurate());
+            base.OnModelCreating(model_builder);
+            model_builder.Configurations.Add(new BookConfigurate());
+            model_builder.Configurations.Add(new RoleConfigurate());
+            model_builder.Configurations.Add(new UserConfigurate());
         }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Books> Books { get; set; }
