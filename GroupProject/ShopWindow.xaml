@@ -92,7 +92,7 @@
                     <StackPanel Orientation="Horizontal" Margin="15">
 
                         <TextBlock Foreground="Gray" Width="200" Margin="15 5" TextWrapping="Wrap">
-                           Lorem Ipsum dolor sit amet
+                           Hello
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
