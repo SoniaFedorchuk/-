@@ -115,7 +115,7 @@
                         <Button Click="btnSearch_Click"
         Style="{DynamicResource MaterialDesignToolForegroundButton}"
         Margin="8,0,0,11"
-        Panel.ZIndex="0" Height="Auto" Width="39" Click="Finder">
+        Panel.ZIndex="0" Height="Auto" Width="39">
                             <materialDesign:PackIcon 
           Kind="Send" />
                         </Button>
