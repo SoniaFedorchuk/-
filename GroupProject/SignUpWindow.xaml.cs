@@ -41,7 +41,7 @@ namespace GroupProject
             {
                 Login = signUpLogin.Text,
                 Password = signUpPassword.Text,
-                RoleId = 3
+                RoleId = 2
             });
 
             MessageBox.Show("U succesfully registrated");

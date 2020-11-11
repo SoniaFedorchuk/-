@@ -22,6 +22,7 @@ namespace DAL
         void ChangeUserRole(int user_id, int new_user_role_id);
 
         Users GetUserByLoginAndPassword(string login, string passHash);
+        Books GetBookByName(string name);
 
         bool SellBook(int index, int amount);
         bool IsExistsUserByLoginAndPassword(string login, string passHash);
@@ -68,6 +69,11 @@ namespace DAL
         {
             var user = ctx.Users.FirstOrDefault(u => u.Login == login && u.Password == passHash);
             return user;
+        }
+        public Books GetBookByName(string name)
+        {
+            var book = ctx.Books.FirstOrDefault(b => b.Name == name);
+            return book;
         }
 
         public bool IsExistsUserByLogin(string login)

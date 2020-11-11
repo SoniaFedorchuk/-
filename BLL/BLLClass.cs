@@ -25,6 +25,7 @@ namespace BLL
         void ChangeUserRole(int user_id, int new_user_role_id);
 
         UserDTO GetUserByLoginAndPassword(string login, string password);
+        BookDTO GetBookByName(string name);
 
         bool SellBooks(int index, int amount);
         bool IsExistsUserByLogin(string login);
@@ -132,6 +133,25 @@ namespace BLL
                 Password = null
             };
         }
+        public BookDTO GetBookByName(string name)
+        {
+            var book = dal.GetBookByName(name);
+            if (book == null)
+                return null;
+            return new BookDTO()
+            {
+                Id = book.Id,
+                Amount = book.Amount,
+                Genre = book.Genre,
+                Author = book.Author,
+                Name = book.Name,
+                Pages = book.Pages,
+                Price = book.Price,
+                Publisher = book.Publisher,
+                Year = book.Year
+            };
+        }
+
         public void DeleteBook(int index)
         {
             dal.DeleteBook(index);

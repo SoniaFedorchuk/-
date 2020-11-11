@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -71,6 +73,24 @@ namespace GroupProject
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (_bll.GetBookByName(txt_Search.Text) != null)
+            {
+                var bookByName = _bll.GetBookByName(txt_Search.Text);
+                ObservableCollection<Books> book = new ObservableCollection<Books>();
+                book.Add(new Books { Author = bookByName.Author, Name = bookByName.Name });
+                listBox.ItemsSource = book;
+            }
+            else if (txt_Search.Text == "")
+                listBox.ItemsSource = books;
+        }
+
+        private void btnTakeMotivation_Click(object sender, RoutedEventArgs e)
+        {
+            WindowForMotivation window = new WindowForMotivation();
+            window.Show();
+        }
     }
-}
 }
