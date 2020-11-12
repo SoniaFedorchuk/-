@@ -74,6 +74,7 @@ namespace GroupProject
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            dataGrid.ItemsSource = _bll.GetAllBooks().Where(b => b.Name.Contains(txt_Search.Text));
             //if (_bll.GetBookByName(txt_Search.Text) != null)
             //{
             //    var bookByName = _bll.GetBookByName(txt_Search.Text);

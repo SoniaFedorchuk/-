@@ -61,74 +61,81 @@ namespace GroupProject
             IPEndPoint ipEndPoint = null;
             while (true)
             {
-                //try
-                //{
-                        byte[] data = client.Receive(ref ipEndPoint);
+                try
+                {
+                    byte[] data = client.Receive(ref ipEndPoint);
 
-                        string message = Encoding.UTF8.GetString(data);
+                    string message = Encoding.UTF8.GetString(data);
 
-                        switch ((UserRole)user.RoleId)
-                        {
-                            case UserRole.Librarian:
-                                switch (message)
-                                {
-                                    case "<connect>":
-                                        SendMessage($"<lib-login=\"{user.Login}\">");
-                                        break;
-                                    default:
-                                        if (Regex.Match(message, "<user-login=\".+\">").Success)
+                    switch ((UserRole)user.RoleId)
+                    {
+                        case UserRole.Librarian:
+                            switch (message)
+                            {
+                                case "<connect>":
+                                    SendMessage($"<lib-login=\"{user.Login}\">");
+                                    break;
+                                default:
+                                    if (Regex.Match(message, "<user-login=\".+\">").Success)
+                                    {
+                                        Match match = Regex.Match(message, "\"");
+                                        Dispatcher.Invoke(() =>
                                         {
-                                            Match match = Regex.Match(message, "\"");
-                                            user_text_block.Text = message.Substring(match.Index, -(match.Index - match.NextMatch().Index));
-                                        }
-                                        else
+                                            user_text_block.Text = "You're in chat with " + message.Substring(match.Index + 1, -(match.Index - match.NextMatch().Index + 1));
+                                        });
+                                    }
+                                    else
+                                    {
+                                        Dispatcher.Invoke(() =>
                                         {
-                                            Dispatcher.Invoke(() =>
-                                            {
-                                                UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage(message);
-                                                receivedMessage.HorizontalAlignment = HorizontalAlignment.Left;
-                                                receivedMessage.VerticalAlignment = VerticalAlignment.Bottom;
-                                                chat_panel.Children.Add(receivedMessage);
-                                            });
-                                        }
-                                        break;
-                                }
-                                break;
-                            case UserRole.User:
-                                switch (message)
-                                {
-                                    case "<connect>":
-                                        SendMessage($"<user-login=\"{user.Login}\">");
-                                        break;
-                                    case "<all-busy>":
-                                        MessageBox.Show("Sorry but all librarians are busy now");
-                                        this.Close();
-                                        break;
-                                    default:
-                                        if (Regex.Match(message, "<lib-login=\".+\">").Success)
+                                            UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage(message);
+                                            receivedMessage.HorizontalAlignment = HorizontalAlignment.Left;
+                                            receivedMessage.VerticalAlignment = VerticalAlignment.Bottom;
+                                            chat_panel.Children.Add(receivedMessage);
+                                        });
+                                    }
+                                    break;
+                            }
+                            break;
+                        case UserRole.User:
+                            switch (message)
+                            {
+                                case "<connect>":
+                                    SendMessage($"<user-login=\"{user.Login}\">");
+                                    break;
+                                case "<all-busy>":
+                                    MessageBox.Show("Sorry but all librarians are busy now");
+                                    this.Close();
+                                    break;
+                                default:
+                                    if (Regex.Match(message, "<lib-login=\".+\">").Success)
+                                    {
+                                        Match match = Regex.Match(message, "\"");
+                                        Dispatcher.Invoke(() =>
                                         {
-                                            Match match = Regex.Match(message, "\"");
-                                            user_text_block.Text = message.Substring(match.Index, -(match.Index - match.NextMatch().Index));
-                                        }
-                                        else
+                                            user_text_block.Text = "You're in chat with " + message.Substring(match.Index + 1, -(match.Index - match.NextMatch().Index + 1));
+                                        });
+
+                                    }
+                                    else
+                                    {
+                                        Dispatcher.Invoke(() =>
                                         {
-                                            Dispatcher.Invoke(() =>
-                                            {
-                                                UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage(message);
-                                                receivedMessage.HorizontalAlignment = HorizontalAlignment.Left;
-                                                receivedMessage.VerticalAlignment = VerticalAlignment.Bottom;
-                                                chat_panel.Children.Add(receivedMessage);
-                                            });
-                                        }
-                                        break;
-                                }
-                                break;
-                        }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show($"Woops, something went wrong\n{ex.Message}");
-                //}
+                                            UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage(message);
+                                            receivedMessage.HorizontalAlignment = HorizontalAlignment.Left;
+                                            receivedMessage.VerticalAlignment = VerticalAlignment.Bottom;
+                                            chat_panel.Children.Add(receivedMessage);
+                                        });
+                                    }
+                                    break;
+                            }
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Woops, something went wrong\n{ex.Message}");
+                }
             }
         }
 

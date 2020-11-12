@@ -26,7 +26,7 @@
             <materialDesign:PackIcon Kind="KeyboardBackspace" Height="27" Width="32" />
         </Button>
 
-        <StackPanel x:Name="chat_panel" VerticalAlignment="Bottom" Grid.Row="2">
+        <StackPanel x:Name="chat_panel" VerticalAlignment="Bottom" Grid.Row="1">
         </StackPanel>
 
         <materialDesign:ColorZone Grid.Row="2"

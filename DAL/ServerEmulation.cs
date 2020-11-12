@@ -74,12 +74,15 @@ namespace DAL
                             {
                                 if (Regex.Match(message, "<lib-login=\".+\">").Success)
                                 {
-                                    SendMessage(data, users.FirstOrDefault(u => u.Value == ip_end_point).Key, server);
+                                    SendMessage(data, users.FirstOrDefault(u => u.Value.Address.ToString() == ip_end_point.Address.ToString() && u.Value.Port == ip_end_point.Port).Key, server);
                                 }
                                 else
                                 {
-                                    if (users[ip_end_point] == null || users[ip_end_point] == ip_end_point)
-                                        SendMessage(message, users.FirstOrDefault(u => u.Value == ip_end_point).Key, server);
+                                    if (!users.ContainsKey(ip_end_point) || users[ip_end_point] == ip_end_point)
+                                    {
+                                        Console.WriteLine(ip_end_point.Address + ":" + ip_end_point.Port);
+                                        SendMessage(message, users.FirstOrDefault(u => u.Value.Address.ToString() == ip_end_point.Address.ToString() && u.Value.Port == ip_end_point.Port).Key, server);
+                                    }
                                     else
                                         SendMessage(message, users[ip_end_point], server);
                                 }
@@ -103,7 +106,7 @@ namespace DAL
         {
             if (ip_end_point != null)
             {
-                Console.WriteLine("Server sent : " + message);
+                Console.WriteLine("Server sent : " + message + $" to {ip_end_point.Address}:{ip_end_point.Port}");
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 server.Send(data, data.Length, ip_end_point);
             }
@@ -112,7 +115,7 @@ namespace DAL
         {
             if (ip_end_point != null)
             {
-                Console.WriteLine("Server sent : " + Encoding.UTF8.GetString(data));
+                Console.WriteLine("Server sent : " + Encoding.UTF8.GetString(data) + $" to {ip_end_point.Address}:{ip_end_point.Port}");
                 server.Send(data, data.Length, ip_end_point);
             }
         }
