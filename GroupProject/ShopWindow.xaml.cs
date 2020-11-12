@@ -102,6 +102,11 @@ namespace GroupProject
             BuyBookWindow buyBookWindow = new BuyBookWindow(dataGrid.SelectedItem as BookDTO,_bll);
             buyBookWindow.Show();
         }
+
+        private void Chat(object sender, RoutedEventArgs e)
+        {
+            new ChatWindow(_bll, user).Show();
+        }
     }
 }
 

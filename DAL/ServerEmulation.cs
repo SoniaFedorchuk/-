@@ -11,7 +11,7 @@ namespace DAL
 {
     class ServerEmulation
     {
-        private const int port = 1488;
+        private const int port = 9999;
         private static Dictionary<IPEndPoint, bool> librarians = new Dictionary<IPEndPoint, bool>();
         private static Dictionary<IPEndPoint, IPEndPoint> users = new Dictionary<IPEndPoint, IPEndPoint>();
 
@@ -27,6 +27,7 @@ namespace DAL
                     byte[] data = server.Receive(ref ip_end_point);
 
                     string message = Encoding.UTF8.GetString(data);
+                    Console.WriteLine("Server received : " + message + $" from {ip_end_point.Address} : {ip_end_point.Port}");
 
                     switch (message)
                     {
@@ -65,16 +66,25 @@ namespace DAL
                                 users.Remove(ip_end_point);
                             break;
                         default:
-                            if(Regex.Match(message, "<user-login=\".+\">").Success)
+                            if (Regex.Match(message, "<user-login=\".+\">").Success)
                             {
                                 SendMessage(data, users[ip_end_point], server);
                             }
-                            if (Regex.Match(message, "<lib-login=\".+\">").Success)
+                            else
                             {
-                                SendMessage(data, users.FirstOrDefault(u => u.Value == ip_end_point).Key, server);
+                                if (Regex.Match(message, "<lib-login=\".+\">").Success)
+                                {
+                                    SendMessage(data, users.FirstOrDefault(u => u.Value == ip_end_point).Key, server);
+                                }
+                                else
+                                {
+                                    if (users[ip_end_point] == null || users[ip_end_point] == ip_end_point)
+                                        SendMessage(message, users.FirstOrDefault(u => u.Value == ip_end_point).Key, server);
+                                    else
+                                        SendMessage(message, users[ip_end_point], server);
+                                }
                             }
-                            //Match match = Regex.Match(message, "\"");
-                            //message.Substring(match.Index, match.NextMatch().Index);
+
                             break;
                     }
                 }
@@ -91,12 +101,20 @@ namespace DAL
 
         private static void SendMessage(string message, IPEndPoint ip_end_point, UdpClient server)
         {
-            byte[] data = Encoding.UTF8.GetBytes(message);
-            server.Send(data, data.Length, ip_end_point);
+            if (ip_end_point != null)
+            {
+                Console.WriteLine("Server sent : " + message);
+                byte[] data = Encoding.UTF8.GetBytes(message);
+                server.Send(data, data.Length, ip_end_point);
+            }
         }
         private static void SendMessage(byte[] data, IPEndPoint ip_end_point, UdpClient server)
         {
-            server.Send(data, data.Length, ip_end_point);
+            if (ip_end_point != null)
+            {
+                Console.WriteLine("Server sent : " + Encoding.UTF8.GetString(data));
+                server.Send(data, data.Length, ip_end_point);
+            }
         }
     }
 }

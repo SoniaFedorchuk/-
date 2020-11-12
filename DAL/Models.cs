@@ -1,16 +1,30 @@
 ﻿using DAL.Configurations;
 using DAL.Models;
 using System;
+using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace DAL
 {
+    //public class MyDbConfig : DbConfiguration
+    //{
+    //    public MyDbConfig()
+    //    {
+    //        SqlConnectionFactory defaultFactory =
+    //            new SqlConnectionFactory("Server=den1.mssql8.gear.host;Username=courselib;Password=Ni1a~P!sO8iS;");
+
+    //        this.SetDefaultConnectionFactory(defaultFactory);
+    //    }
+    //}
+
+    //[DbConfigurationType(typeof(MyDbConfig))]
 
     public class Model : DbContext
     {
         public Model()
-            : base("name=ModelConnection")
+            : base("LibShopContext")
         {
             Database.SetInitializer(new Initializer());
         }

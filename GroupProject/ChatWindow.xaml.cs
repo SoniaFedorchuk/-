@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,7 @@ namespace GroupProject
     public partial class ChatWindow : Window
     {
         private static string remote_ip_address = "192.168.1.141";
-        private static int remote_port = 1488;
+        private static int remote_port = 9999;
         UdpClient client = new UdpClient(0);
         IBLLClass _bll = null;
         UserDTO user = null;
@@ -33,11 +34,6 @@ namespace GroupProject
         public ChatWindow(IBLLClass _bll, UserDTO user)
         {
             InitializeComponent();
-
-            UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage("blyat cyka");
-
-            chat_panel.Children.Add(new UserControlReceivedMessage("blyat cyka"));
-            chat_panel.Children.Add(new UserControlSentMessage("blyat cyka"));
 
             this._bll = _bll;
             this.user = user;
@@ -49,6 +45,11 @@ namespace GroupProject
                     break;
                 case UserRole.User:
                     SendMessage("<connect-user>");
+                    foreach (Control item in grid.Children.OfType<Control>())
+                    {
+                        if (item.Tag != null && item.Tag.ToString() == "for-lib")
+                            item.Visibility = Visibility.Collapsed;
+                    }
                     break;
             }
 
@@ -60,37 +61,74 @@ namespace GroupProject
             IPEndPoint ipEndPoint = null;
             while (true)
             {
-                try
-                {
-                    byte[] data = client.Receive(ref ipEndPoint);
+                //try
+                //{
+                        byte[] data = client.Receive(ref ipEndPoint);
 
-                    string message = Encoding.UTF8.GetString(data);
+                        string message = Encoding.UTF8.GetString(data);
 
-                    switch ((UserRole)user.RoleId)
-                    {
-                        case UserRole.Librarian:
-                            switch (message)
-                            {
-                                //case "<connect>":
-                                //    SendMessage("<lib-login=\"\">")
-                                //default:
-                                //    break;
-                            }
-                            break;
-                        case UserRole.User:
-                            break;
-                    }
-
-
-                    Dispatcher.Invoke(() =>
-                    {
-
-                    });
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Woops, something went wrong\n{ex.Message}");
-                }
+                        switch ((UserRole)user.RoleId)
+                        {
+                            case UserRole.Librarian:
+                                switch (message)
+                                {
+                                    case "<connect>":
+                                        SendMessage($"<lib-login=\"{user.Login}\">");
+                                        break;
+                                    default:
+                                        if (Regex.Match(message, "<user-login=\".+\">").Success)
+                                        {
+                                            Match match = Regex.Match(message, "\"");
+                                            user_text_block.Text = message.Substring(match.Index, -(match.Index - match.NextMatch().Index));
+                                        }
+                                        else
+                                        {
+                                            Dispatcher.Invoke(() =>
+                                            {
+                                                UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage(message);
+                                                receivedMessage.HorizontalAlignment = HorizontalAlignment.Left;
+                                                receivedMessage.VerticalAlignment = VerticalAlignment.Bottom;
+                                                chat_panel.Children.Add(receivedMessage);
+                                            });
+                                        }
+                                        break;
+                                }
+                                break;
+                            case UserRole.User:
+                                switch (message)
+                                {
+                                    case "<connect>":
+                                        SendMessage($"<user-login=\"{user.Login}\">");
+                                        break;
+                                    case "<all-busy>":
+                                        MessageBox.Show("Sorry but all librarians are busy now");
+                                        this.Close();
+                                        break;
+                                    default:
+                                        if (Regex.Match(message, "<lib-login=\".+\">").Success)
+                                        {
+                                            Match match = Regex.Match(message, "\"");
+                                            user_text_block.Text = message.Substring(match.Index, -(match.Index - match.NextMatch().Index));
+                                        }
+                                        else
+                                        {
+                                            Dispatcher.Invoke(() =>
+                                            {
+                                                UserControlReceivedMessage receivedMessage = new UserControlReceivedMessage(message);
+                                                receivedMessage.HorizontalAlignment = HorizontalAlignment.Left;
+                                                receivedMessage.VerticalAlignment = VerticalAlignment.Bottom;
+                                                chat_panel.Children.Add(receivedMessage);
+                                            });
+                                        }
+                                        break;
+                                }
+                                break;
+                        }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show($"Woops, something went wrong\n{ex.Message}");
+                //}
             }
         }
 
@@ -115,6 +153,30 @@ namespace GroupProject
                 case UserRole.User:
                     SendMessage("<leave-user>");
                     break;
+            }
+        }
+
+        private void Get_Offline(object sender, RoutedEventArgs e)
+        {
+            SendMessage("<pause-lib>");
+        }
+
+        private void Get_Online(object sender, RoutedEventArgs e)
+        {
+            SendMessage("<resume-lib>");
+        }
+
+        private void Send(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(sended_message.Text))
+            {
+                SendMessage(sended_message.Text);
+
+                UserControlSentMessage sentMessage = new UserControlSentMessage(sended_message.Text);
+                sentMessage.HorizontalAlignment = HorizontalAlignment.Right;
+                sentMessage.VerticalAlignment = VerticalAlignment.Bottom;
+                chat_panel.Children.Add(sentMessage);
+                sended_message.Text = string.Empty;
             }
         }
     }

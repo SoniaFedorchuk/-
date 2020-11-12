@@ -14,18 +14,6 @@ namespace DAL
         {
             base.Seed(context);
 
-            var users = new List<Users>()
-            {
-                new Users()
-                {
-                    Login = "admin",
-                    Password = Utils.ComputeSha256Hash("admin"),
-                    RoleId = (int)UserRole.Admin
-                }
-            };
-            context.Users.AddRange(users);
-            context.SaveChanges();
-
             var role = new List<Roles>()
             {
                 new Roles()
@@ -107,6 +95,18 @@ namespace DAL
                     Genre = "Fantasy"
                 }
             };
+
+            var users = new List<Users>()
+            {
+                new Users()
+                {
+                    Login = "admin",
+                    Password = Utils.ComputeSha256Hash("admin"),
+                    RoleId = (int)UserRole.Admin
+                }
+            };
+            context.Users.AddRange(users);
+            context.SaveChanges();
 
             context.Books.AddRange(books);
             context.SaveChanges();
