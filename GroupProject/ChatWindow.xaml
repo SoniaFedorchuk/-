@@ -6,28 +6,56 @@
         xmlns:local="clr-namespace:GroupProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ChatWindow" Height="411.654" Width="731.203" Closing="Close_Connections">
-    <Grid Background="#FFECDCD6">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="47*"/>
             <RowDefinition Height="278*"/>
             <RowDefinition Height="56*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0"  Background="#FFD4B1A4" CornerRadius="0 0 15 15">
-
-        </Border>
+        <materialDesign:ColorZone Background="#FF3E3D42" Padding="16" Height="58" Grid.RowSpan="2">
+            <TextBlock  FontWeight="Medium" FontSize="20" Foreground="White" Margin="68,-5,392,0"/>
+        </materialDesign:ColorZone>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton" Margin="665,10,25,3" Height="Auto" Width="Auto" Background="#FFCAF1DA" BorderBrush="#FFCAF1DA">
+            <materialDesign:PackIcon  Kind="AccountTick" Height="24"  Width="24" />
+        </Button>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton" Margin="625,10,65,3" Height="Auto" Width="Auto" Background="#FFE89CB7" BorderBrush="#FFE89CB7">
+            <materialDesign:PackIcon  Kind="AccountWarning" Height="24"  Width="24" />
+        </Button>
+        <Button Margin="10,8,649,7" Background="#FFBD8E7E">
+            <materialDesign:PackIcon Kind="KeyboardBackspace" Height="27" Width="32" />
+        </Button>
 
         <StackPanel x:Name="chat_panel" VerticalAlignment="Bottom">
         </StackPanel>
 
-        <Border Background="#FFD4B1A4" Grid.Row="2" CornerRadius="20 20 20 20">
-            <StackPanel Orientation="Horizontal" >
-                <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="625" Height="56" Margin="15 0 5 0"/>
-                <Button HorizontalAlignment="Left" VerticalAlignment="Top" Height="56" Width="72"  Background="#FFBD8E7E" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" BorderBrush="#FFD8A181">
-                    <materialDesign:PackIcon Kind="Send" Width="20" Height="20" VerticalAlignment="Center"/>
-                </Button>
-            </StackPanel>
-        </Border>
+        <materialDesign:ColorZone Grid.Row="2"
+  Mode="PrimaryMid"
+  Padding="16" Background="#FFBD8E7E">
+            <DockPanel Height="34">
 
+                <StackPanel Orientation="Horizontal"  materialDesign:RippleAssist.IsCentered="True" Height="40">
+                    <materialDesign:ColorZone
+        Mode="Standard"
+        CornerRadius="2"
+        Panel.ZIndex="1"
+        materialDesign:ShadowAssist.ShadowDepth="Depth1" Width="632" Height="34">
+
+                        <TextBox Grid.Column="1" Opacity="100" Margin="8,0,0,10"  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+            BorderThickness="0"
+            MinWidth="200"
+            VerticalAlignment="Center" Height="24" />
+
+                    </materialDesign:ColorZone>
+                    <Button
+        Style="{DynamicResource MaterialDesignToolForegroundButton}"
+        Margin="8,-13,0,4"
+        Panel.ZIndex="0" Width="65" Height="Auto">
+                        <materialDesign:PackIcon Foreground="White"
+          Kind="Send" Height="25" Width="35" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
     </Grid>
 </Window>
