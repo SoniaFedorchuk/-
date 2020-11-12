@@ -23,7 +23,7 @@ namespace GroupProject
     {
         BookDTO book = null;
         IBLLClass _bll = null;
-        public BuyBookWindow(BookDTO bookDTO,IBLLClass _bll)
+        public BuyBookWindow(BookDTO bookDTO, IBLLClass _bll)
         {
             InitializeComponent();
 

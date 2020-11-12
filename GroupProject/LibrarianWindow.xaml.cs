@@ -2,6 +2,7 @@
 using BLL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +23,15 @@ namespace GroupProject
     public partial class LibrarianWindow : Window
     {
         private IBLLClass _bll = null;
+        private UserDTO user = null;
         
 
-        public LibrarianWindow()
+        public LibrarianWindow(IBLLClass _bll, UserDTO user)
         {
             InitializeComponent();
-            _bll = new BLLClass();
+
+            this._bll = _bll;
+            this.user = user;
 
             this.Update();
         }
@@ -135,6 +139,11 @@ namespace GroupProject
                 Author = "Rowling",
                 Genre = "Fantasy"
             });
+        }
+
+        private void Chat(object sender, RoutedEventArgs e)
+        {
+            new ChatWindow(_bll, user).Show();
         }
     }
 }

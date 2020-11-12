@@ -22,10 +22,10 @@ namespace GroupProject
     public partial class AddBookWindow : Window
     {
         private IBLLClass _bll = null;
-        public AddBookWindow(IBLLClass bll)
+        public AddBookWindow(IBLLClass _bll)
         {
             InitializeComponent();
-            _bll = bll;
+            this._bll = _bll;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

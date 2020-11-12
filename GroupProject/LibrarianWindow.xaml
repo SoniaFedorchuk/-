@@ -74,7 +74,7 @@
                 </StackPanel>
             </Button>
             <Separator></Separator>
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48" Click="Chat">
                 <StackPanel Orientation="Horizontal" Height="30" Width="149">
                     <materialDesign:PackIcon Kind="Chat" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Chat" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>

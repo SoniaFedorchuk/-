@@ -38,7 +38,7 @@ namespace BLL
 
         public BLLClass()
         {
-            dal = new DALClass();
+            dal = DALClass.GetInstance();
         }
 
         public IEnumerable<BookDTO> GetAllBooks()

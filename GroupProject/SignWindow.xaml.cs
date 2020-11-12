@@ -1,5 +1,6 @@
 ﻿using BLL;
 using BLL.DTO;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,6 @@ namespace GroupProject
     {
         private IBLLClass _bll = null;
 
-        enum UserRole { Admin = 1, Librarian = 2, User = 3 }
-
         public SignWindow()
         {
             InitializeComponent();
@@ -47,20 +46,20 @@ namespace GroupProject
                 return;
             }
 
-            switch ((UserRole)_bll.GetUserByLoginAndPassword(signInLogin.Text, signInPassword.Text).RoleId)
+            UserDTO user = _bll.GetUserByLoginAndPassword(signInLogin.Text, signInPassword.Text);
+
+            switch ((UserRole)user.RoleId)
             {
                 case UserRole.Admin:
-                    new AdminWindow().Show();
+                    new AdminWindow(_bll).Show();
                     this.Close();
                     break;
                 case UserRole.Librarian:
-                    LibrarianWindow librarian = new LibrarianWindow();
-                    librarian.Show();
+                    new LibrarianWindow(_bll, user).Show();
                     this.Close();
                     break;
                 case UserRole.User:
-                    ShopWindow shop = new ShopWindow();
-                    shop.Show();
+                    new ShopWindow(_bll, user).Show();
                     this.Close();
                     break;
                 default:
@@ -71,7 +70,7 @@ namespace GroupProject
 
         private void SingUpButtonClick(object sender, RoutedEventArgs e)
         {
-            SignUpWindow signUpWindow = new SignUpWindow();
+            SignUpWindow signUpWindow = new SignUpWindow(_bll);
             signUpWindow.Show();
             this.Close();
         }

@@ -25,16 +25,15 @@ namespace GroupProject
     public partial class ShopWindow : Window
     {
         private IBLLClass _bll = null;
-        ObservableCollection<Books> books = new ObservableCollection<Books>();
-        public ShopWindow()
+        UserDTO user = null;
+
+        public ShopWindow(IBLLClass _bll, UserDTO user)
         {
             InitializeComponent();
-            _bll = new BLLClass();
 
-            //for (int i = 0; i < (_bll.GetAllBooks()).ToList().Count; ++i)
-            //{
-            //    books.Add(new Books() { Author = ((_bll.GetAllBooks()).ToList()[i].Author), Name = ((_bll.GetAllBooks()).ToList()[i].Name) });
-            //}
+            this._bll = _bll;
+            this.user = user;
+
             dataGrid.ItemsSource = _bll.GetAllBooks(); 
         }
 
@@ -75,15 +74,15 @@ namespace GroupProject
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (_bll.GetBookByName(txt_Search.Text) != null)
-            {
-                var bookByName = _bll.GetBookByName(txt_Search.Text);
-                ObservableCollection<Books> book = new ObservableCollection<Books>();
-                book.Add(new Books { Author = bookByName.Author, Name = bookByName.Name });
-                dataGrid.ItemsSource = book;
-            }
-            else if (txt_Search.Text == "")
-                dataGrid.ItemsSource = books;
+            //if (_bll.GetBookByName(txt_Search.Text) != null)
+            //{
+            //    var bookByName = _bll.GetBookByName(txt_Search.Text);
+            //    ObservableCollection<Books> book = new ObservableCollection<Books>();
+            //    book.Add(new Books { Author = bookByName.Author, Name = bookByName.Name });
+            //    dataGrid.ItemsSource = book;
+            //}
+            //else if (txt_Search.Text == "")
+            //    dataGrid.ItemsSource = books;
         }
 
         private void btnTakeMotivation_Click(object sender, RoutedEventArgs e)

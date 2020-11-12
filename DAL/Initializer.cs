@@ -14,6 +14,18 @@ namespace DAL
         {
             base.Seed(context);
 
+            var users = new List<Users>()
+            {
+                new Users()
+                {
+                    Login = "admin",
+                    Password = Utils.ComputeSha256Hash("admin"),
+                    RoleId = (int)UserRole.Admin
+                }
+            };
+            context.Users.AddRange(users);
+            context.SaveChanges();
+
             var role = new List<Roles>()
             {
                 new Roles()

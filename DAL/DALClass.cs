@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,6 +33,16 @@ namespace DAL
     public class DALClass : IDALClass
     {
         private Model ctx = new Model();
+        private static DALClass instance = null;
+
+        private DALClass() { }
+
+        public static DALClass GetInstance()
+        {
+            if (instance == null)
+                instance = new DALClass();
+            return instance;
+        }
 
         public void AddUser(Users newUser)
         {
