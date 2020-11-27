@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="SellWindow" Height="250" Width="350">
+        Title="SellWindow" Height="250" Width="350" ResizeMode="NoResize">
     <Grid>
         <Label FontWeight="Medium" FontSize="30" Margin="133,0,28,127">Sell</Label>
-        <Label FontWeight="Medium" FontSize="20" Margin="10,49,74,117">Choose amount of books :</Label>
+        <Label FontWeight="Medium" FontSize="16" Margin="25,71,70,118">Choose amount of books :</Label>
         <Slider x:Name="amount"
   Orientation="Horizontal"
   Minimum="0"
   Maximum="100"
   Style="{StaticResource MaterialDesignDiscreteSlider}"
-  ToolTip="MaterialDesignDiscreteSlider" Margin="21,79,141,47" Foreground="#FFBD8E7E" />
-        <Button Margin="191,162,10,10" Height="Auto" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E" Content="Apply" FontSize="18" Opacity="100" Click="Button_Click"/>
+  ToolTip="MaterialDesignDiscreteSlider" Margin="21,79,28,47" Foreground="#FFBD8E7E" />
+        <Button Margin="191,172,10,10" Height="Auto" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E" Content="Apply" FontSize="18" Opacity="100" Click="Button_Click"/>
     </Grid>
 </Window>

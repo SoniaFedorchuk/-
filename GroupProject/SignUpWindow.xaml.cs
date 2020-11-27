@@ -1,5 +1,6 @@
 ﻿using BLL;
 using BLL.DTO;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +24,10 @@ namespace GroupProject
     {
         private IBLLClass _bll = null;
 
-        public SignUpWindow()
+        public SignUpWindow(IBLLClass _bll)
         {
             InitializeComponent();
-            _bll = new BLLClass();
+            this._bll = _bll;
         }
 
         private void SingUpButtonClick(object sender, RoutedEventArgs e)
@@ -41,7 +42,7 @@ namespace GroupProject
             {
                 Login = signUpLogin.Text,
                 Password = signUpPassword.Text,
-                RoleId = 3
+                RoleId = (int)UserRole.User
             });
 
             MessageBox.Show("U succesfully registrated");

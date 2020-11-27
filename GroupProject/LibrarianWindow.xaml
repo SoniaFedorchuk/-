@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LibrarianWindow" Height="540" Width="1000" Background="#FFFAFAFA">
+        Title="LibrarianWindow" Height="540" Width="1000" Background="#FFFAFAFA" ResizeMode="NoResize">
     <Grid>
         <ListView x:Name="dataGrid"
   ItemsSource="{Binding Items1}" Margin="198,10,21,10">
@@ -74,7 +74,7 @@
                 </StackPanel>
             </Button>
             <Separator></Separator>
-            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"  Foreground="#FFBD8E7E" Opacity="100" Height="48" Click="Chat">
                 <StackPanel Orientation="Horizontal" Height="30" Width="149">
                     <materialDesign:PackIcon Kind="Chat" Width="20" Height="20" VerticalAlignment="Center"/>
                     <TextBlock Text="Chat" Margin="20 0" FontSize="15" VerticalAlignment="Center" Foreground="#FFFAFAFA"/>

@@ -23,12 +23,14 @@ namespace GroupProject
     {
         IBLLClass _bll = null;
 
-        public AdminWindow()
+        public AdminWindow(IBLLClass _bll)
         {
             InitializeComponent();
-            _bll = new BLLClass();
-            this.Update();
+
+            this._bll = _bll;
             UsersData.IsReadOnly = true;
+
+            this.Update();
         }
 
         public void Update()

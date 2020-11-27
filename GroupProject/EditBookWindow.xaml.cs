@@ -21,7 +21,7 @@ namespace GroupProject
         IBLLClass _bll;
         BookDTO updatable_book;
 
-        public EditBookWindow(BookDTO book,IBLLClass bll)
+        public EditBookWindow(BookDTO book, IBLLClass bll)
         {
             InitializeComponent();
             _bll = bll;

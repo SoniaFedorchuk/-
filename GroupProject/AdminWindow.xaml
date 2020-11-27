@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800"  ResizeMode="NoResize">
     <Grid Background="#FF3E3D42">
         <DataGrid x:Name="UsersData" HorizontalAlignment="Left" Height="419" Margin="184,0,0,0" VerticalAlignment="Top" Width="598"/>
         <Button Content="Change role" HorizontalAlignment="Left" Margin="25,20,0,0" VerticalAlignment="Top" Width="137" Click="ChangeRole" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E"/>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace DAL
         void ChangeUserRole(int user_id, int new_user_role_id);
 
         Users GetUserByLoginAndPassword(string login, string passHash);
+        Books GetBookByName(string name);
 
         bool SellBook(int index, int amount);
         bool IsExistsUserByLoginAndPassword(string login, string passHash);
@@ -31,6 +33,16 @@ namespace DAL
     public class DALClass : IDALClass
     {
         private Model ctx = new Model();
+        private static DALClass instance = null;
+
+        private DALClass() { }
+
+        public static DALClass GetInstance()
+        {
+            if (instance == null)
+                instance = new DALClass();
+            return instance;
+        }
 
         public void AddUser(Users newUser)
         {
@@ -68,6 +80,11 @@ namespace DAL
         {
             var user = ctx.Users.FirstOrDefault(u => u.Login == login && u.Password == passHash);
             return user;
+        }
+        public Books GetBookByName(string name)
+        {
+            var book = ctx.Books.FirstOrDefault(b => b.Name == name);
+            return book;
         }
 
         public bool IsExistsUserByLogin(string login)

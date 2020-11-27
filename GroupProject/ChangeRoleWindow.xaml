@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="ChangeRoleWindow" Height="450" Width="800">
+        Title="ChangeRoleWindow" Height="300" Width="350" ResizeMode="NoResize">
     <Grid>
-        <ComboBox x:Name="roleComboBox" HorizontalAlignment="Left" Margin="338,190,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Change" HorizontalAlignment="Left" Margin="349,278,0,0" VerticalAlignment="Top" Width="109" Click="ChangeRole"/>
+        <Label FontWeight="Medium" FontSize="25" Margin="98,10,72,206">Change role</Label>
+        <ComboBox x:Name="roleComboBox" HorizontalAlignment="Left" Margin="111,87,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Change" FontSize="18" HorizontalAlignment="Left" Margin="95,184,0,0" VerticalAlignment="Top" Width="158" Click="ChangeRole" Height="45" Background="#FFBD8E7E" BorderBrush="#FFBD8E7E"/>
 
     </Grid>
 </Window>
